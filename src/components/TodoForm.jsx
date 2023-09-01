@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 
 const TodoForm = ({addTodo}) => {
-  const [value, setValue] = useState(''); // Provide an initial value
+
+  const [value, setValue] = useState(''); 
 
   const handleSubmit = e => {
     e.preventDefault();
