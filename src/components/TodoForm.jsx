@@ -1,13 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 
-const TodoForm = () => {
+const TodoForm = ({addTodo}) => {
   const [value, setValue] = useState(''); // Provide an initial value
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log(value);
+    addTodo(value);
+
+    setValue("")
   }
 
   return (
@@ -15,9 +17,8 @@ const TodoForm = () => {
       <input
         type="text"
         className='todo-input'
-        value={value}
+        value={value} onChange={(e) => setValue(e.target.value)}
         placeholder='What is the task today?'
-        onChange={(e) => setValue(e.target.value)}
       />
       <button type='submit' className='todo-btn'>
         Add Task
