@@ -1,9 +1,18 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, {useState} from 'react';
 
-const EditTodoForm = () => {
+const EditTodoForm = ({editTodo, task}) => {
+  const [value, setValue] = useState(task.task);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        editTodo(value, task.id);
+      };
   return (
-    <div>EditTodoForm</div>
+    <form onSubmit={handleSubmit} className="TodoForm">
+    <input type="text" value={value} onChange={(e) => setValue(e.target.value)} className="todo-input" placeholder='Update task' />
+    <button type="submit" className='todo-btn'>Add Task</button>
+  </form>
   )
 }
 
